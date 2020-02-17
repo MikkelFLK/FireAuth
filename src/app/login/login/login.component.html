@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6-md-offset-3">
+      <h1 *ngIf="loginService && loginService.userData |
+async">{{(loginService.userData | async)?.email}}</h1>
+      <div *ngIf="!(loginService.userData|async)">
+        <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="text" class="form-control" [(ngModel)]="email"
+                 id="email" placeholder="email">
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" [(ngModel)]="password"
+                   id="pwd" placeholder="password">
+          </div>
+          <button (click)="login()" class="btn btn-default">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
