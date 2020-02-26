@@ -1,5 +1,6 @@
 <ul>
   <li><a routerLink="/login/auth">Login</a></li>
   <li><a routerLink="/user/profile">Profile</a></li>
-  <li><button (click)="logOut()">Log Out</button></li>
+  <li><a routerLink="/user/create">New User</a></li>
+  <li><a (click)="authServ.SignOut()">Log out</a></li>
 </ul>

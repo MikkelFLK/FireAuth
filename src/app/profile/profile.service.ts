@@ -14,7 +14,7 @@ export class ProfileService {
   constructor(private db: AngularFirestore) { }
 
 
-  getUser(id: string): Observable<Users> {
+  getUserById(id: string): Observable<Users> {
     const userDoc = this.db.doc<Users>(collection_path + '/' + id);
     return userDoc.snapshotChanges()
       .pipe(

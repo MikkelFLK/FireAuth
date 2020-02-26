@@ -1,0 +1,45 @@
+<div class="col-md-8 login-sec">
+  <h2 class="text-center">Register</h2>
+  <form [formGroup]="userFormGroup" (ngSubmit)="addUser(email, password)">
+
+    <div class="wrap-input100 validate-input">
+      <span class="label-input100">Email:</span>
+      <input class="input100 emailInput" type="username" name="email" formControlName="email" placeholder="Enter your email" autocomplete="email" #email>
+      <span class="focus-input100"></span>
+    </div>
+
+    <div class="wrap-input100 validate-input">
+      <span class="label-input100">Username:</span>
+      <input class="input100 usernameInput" type="username" name="username" formControlName="fName" placeholder="Enter your first name" autocomplete="username">
+      <span class="focus-input100"></span>
+    </div>
+
+    <div class="wrap-input100 validate-input">
+      <span class="label-input100">Username:</span>
+      <input class="input100 usernameInput" type="username" name="username" formControlName="lName" placeholder="Enter your last name" autocomplete="username">
+      <span class="focus-input100"></span>
+    </div>
+
+    <div class="wrap-input100 validate-input" id="Password">
+      <span class="label-input100">Password:</span>
+      <input class="input100 passwordInput1" type="password" name="Password" formControlName="userPassword" placeholder="Enter your password" autocomplete="new-password" #userPassword required>
+      <span class="focus-input100"></span>
+    </div>
+
+    <div class="wrap-input100 validate-input" id="CPassword">
+      <span class="label-input100">Confirm Password:</span>
+      <span class="alert alert-danger label-input100"
+            *ngIf="userFormGroup.controls.userPasswordC.errors?.MatchPassword">Password not match</span>
+      <input class="input100 passwordInput2" type="password" name="CPassword" formControlName="userPasswordC" placeholder="Confirm your password" autocomplete="new-password">
+      <span class="focus-input100"></span>
+    </div>
+  </form>
+
+  <div class="container-login100-form-btn">
+    <div class="wrap-login100-form-btn">
+      <button [disabled]="userFormGroup.controls.userPasswordC.errors?.MatchPassword"  type="button" class="btn-primary generateRandom mr-2 registerButton" (click)="addUser(email.value,userPassword.value)" routerLink="/chat"><!--Indsæt link til chat her-->
+        Register
+      </button>
+    </div>
+  </div>
+</div>

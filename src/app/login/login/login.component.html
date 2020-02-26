@@ -1,21 +1,23 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6-md-offset-3">
-      <h1 *ngIf="loginService && loginService.userData |
-async">{{(loginService.userData | async)?.email}}</h1>
-      <div *ngIf="!(loginService.userData|async)">
-        <div class="form-group">
-          <label for="email">Email address:</label>
-          <input type="text" class="form-control" [(ngModel)]="email"
-                 id="email" placeholder="email">
-          <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" [(ngModel)]="password"
-                   id="pwd" placeholder="password">
-          </div>
-          <button (click)="login()" class="btn btn-default">Login</button>
-        </div>
-      </div>
+<div class="col-md-8 login-sec">
+  <h2 class="text-center">Login</h2>
+  <form class="login100-form validate-form">
+    <div class="wrap-input100 validate-input">
+      <span class="label-input100">Email:</span>
+      <input class="input100 nameInput" type="text" name="username" placeholder="Type your username" #email required>
+      <span class="focus-input100"></span>
+    </div>
+    <div class="wrap-input100 validate-input">
+      <span class="label-input100">Password:</span>
+      <input class="input100 passInput" type="password" name="pass" placeholder="Type your password" #userPassword required>
+      <span class="focus-input100 password"></span>
+    </div>
+  </form>
+  <div class="container-login100-form-btn">
+    <div class="wrap-login100-form-btn">
+      <button class="btn-primary LoginFormBtn mr-2" [disabled]="authService.isLoggedIn" (click)="authService.SignIn(email.value, userPassword.value)">
+        Login
+      </button>
     </div>
   </div>
 </div>
+
