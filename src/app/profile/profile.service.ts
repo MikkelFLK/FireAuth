@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {Observable} from 'rxjs';
+import {from, Observable, pipe} from 'rxjs';
 import {Users} from './shared/users';
-import {map} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
+import Item = firebase.analytics.Item;
+import {User} from 'firebase';
 
 const collection_path = 'users';
 
@@ -10,6 +12,7 @@ const collection_path = 'users';
   providedIn: 'root'
 })
 export class ProfileService {
+  user: Users;
 
   constructor(private db: AngularFirestore) { }
 
@@ -23,5 +26,10 @@ export class ProfileService {
           return {id, ...data};
         })
       );
+  }
+
+  updateUser(user) {
+    const userDoc = this.db.doc<Users>(collection_path + '/' + user.id);
+    userDoc.update(user);
   }
 }

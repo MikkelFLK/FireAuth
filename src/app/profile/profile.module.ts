@@ -6,14 +6,17 @@ import { ProfileComponent } from './profile/profile.component';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { ProfileCreateComponent } from './profile-create/profile-create.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
-  declarations: [ProfileComponent, ProfileCreateComponent],
+  declarations: [ProfileComponent, ProfileCreateComponent, ProfileEditComponent],
     imports: [
         CommonModule,
         ProfileRoutingModule,
         AngularFireAuthModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+      RouterModule
     ]
 })
 export class ProfileModule { }

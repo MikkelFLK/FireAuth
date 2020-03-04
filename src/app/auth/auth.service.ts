@@ -18,7 +18,7 @@ export class AuthService {
               private afs: AngularFirestore
               ) {
     this.afAuth.authState.subscribe(user => {
-      if (user) { debugger;
+      if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user'));
@@ -31,7 +31,7 @@ export class AuthService {
 
   SignIn(email, password) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((result) => { debugger;
+      .then((result) => {
         this.SetUserData(result.user);
       }).catch((error) => {
         window.alert(error.message);
@@ -47,7 +47,7 @@ export class AuthService {
       });
   }
 
-  private SetUserData(user) { debugger;
+  private SetUserData(user) {
   const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
   const userData: Users = {
     email: user.email
