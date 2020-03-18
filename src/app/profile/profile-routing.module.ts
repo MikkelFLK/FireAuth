@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ProfileComponent} from './profile/profile.component';
 import {ProfileCreateComponent} from './profile-create/profile-create.component';
+import {ProfileEditComponent} from './profile-edit/profile-edit.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'create',
     component: ProfileCreateComponent
+  },
+  {
+    path: 'edit',
+    component: ProfileEditComponent
   }
 ];
 

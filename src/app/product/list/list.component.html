@@ -1,0 +1,6 @@
+<h2>List all Products</h2>
+<ul>
+  <li class="text" *ngFor="let prod of prods | async">
+    {{prod.pName}} -- {{prod.pDescript}}
+  </li>
+</ul>

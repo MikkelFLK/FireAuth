@@ -7,8 +7,11 @@ const routes: Routes = [
   loadChildren: './login/login.module#LoginModule'
   },
   {path: 'user',
-  loadChildren: './profile/profile.module#ProfileModule'}
-
+  loadChildren: './profile/profile.module#ProfileModule'
+  },
+  { path: 'product',
+  loadChildren: './product/product.module#ProductModule'
+  }
 
 ];
 
