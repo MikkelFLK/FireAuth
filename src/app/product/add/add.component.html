@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-body">
+    <div class="card-header">Profile information</div>
+    <form [formGroup]="productFormGroup" (ngSubmit)="createProduct()">
+      <div>
+        <label>
+          First name
+          <input type="text" formControlName="pName">
+        </label>
+        <label>
+          Last name
+          <input type="text" formControlName="pDescript">
+        </label>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
