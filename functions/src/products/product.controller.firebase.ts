@@ -1,8 +1,7 @@
-import {ProductService} from './product.service';
+import {ProductController} from './product.controller';
 
-export class ProductControllerFirebase {
+export class ProductControllerFirebase implements ProductController {
 
-  constructor(private productService: ProductService) {
-  }
 
 }
+

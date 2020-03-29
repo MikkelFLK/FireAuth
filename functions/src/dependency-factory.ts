@@ -8,6 +8,6 @@ export class DependencyFactory {
   getProductController(): ProductController {
     const repo: ProductRepository = new ProductRepositoryFirebase();
     const service: ProductService = new ProductService(repo);
-    return  new ProductControllerFirebase(service)
+    return  new ProductControllerFirebase()
   }
 }
