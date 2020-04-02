@@ -1,26 +1,34 @@
-// import {IMock, Mock} from 'moq.ts';
-// import {ProductService} from '../../src/products/product.service';
-// import {ProductControllerFirebase} from '../../src/products/product.controller.firebase';
-// import {Products} from '../../src/models/products';
-// import {Stock} from '../../src/models/stock';
+import {IMock, Times} from 'moq.ts';
+import {ProductService} from '../../src/products/product.service';
+import {TestHelper} from '../helpers/helper';
+import {ProductRepository} from '../../src/products/product.repository';
+import {StockRepository} from '../../src/stock/stock.repository';
+import {Products} from '../../src/models/products';
 
-/* describe('ProductController', () => {
-  let productServiceMock: IMock<ProductService>;
-  let productController: ProductControllerFirebase;
-  let productService: ProductService
-  let product: Products = {pName: 'a', pDescript: 'b', id: 'ab'}
-  // let newStock: Stock = {product: newProduct, Amount: 5, id: 's'}
+describe('ProductService', ()=> {
+  let testHelper = new TestHelper();
+  let productRepository: IMock<ProductRepository>;
+  let stockRepository: IMock<StockRepository>;
+  let productService: ProductService;
   beforeEach(() => {
-    productServiceMock = new Mock<ProductService>();
-    productServiceMock.setup(ps => ps.writeProduct(product))
-      .returns(new Promise((resolve, reject) => {resolve()}));
-    //productController = new ProductControllerFirebase(productServiceMock.object());
+    productRepository = testHelper.getProductRepositopryMock();
+    stockRepository = testHelper.getStockRepositoryMock();
+    productService = new ProductService(productRepository.object(), stockRepository.object());
   });
 
-  it('Creating a new product should create a stock', async () => {
-    const create: Promise<FirebaseFirestore.WriteResult> = productService.writeProduct(product)
-    expect(create).toHaveBeenCalledTimes(1);
-  })
+  it('Product Service needs a Stock repo nad a Product repo', () => {
+    const productServiceDefined = new ProductService(productRepository.object(), stockRepository.object());
+    expect(productServiceDefined).toBe(productServiceDefined);
+  });
 
+  it('Product Service has a Create Function that expects a product that returns a Promise containing the product', async () => {
+    const productAfter: Products = await productService.createProduct(testHelper.getProduct1());
+    expect(productAfter).toBe(testHelper.getProduct1());
+  });
+
+  it('When new product is created, create a stock of 5 with new product', async () => {
+    await productService.createProduct(testHelper.product1);
+    stockRepository.verify(stockRepo => stockRepo.createStock(testHelper.product1, 5), Times.Exactly(1));
+  });
 });
-*/
+
