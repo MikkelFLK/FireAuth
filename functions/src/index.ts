@@ -18,3 +18,9 @@ admin.initializeApp({
    .onCreate((snap, context) => {
      return difa.getProductController().createProduct(snap, context);
    });
+
+ exports.execute = functions.firestore
+   .document('order/{id}')
+   .onCreate((snap, context) => {
+     return difa.getOrderContoller().execute(snap, context);
+   });

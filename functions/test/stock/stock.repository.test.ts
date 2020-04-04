@@ -13,6 +13,6 @@ describe('StockRepository', ()=> {
   it('create stock returns a stock', async () => {
     await stockRepository.object().createStock(testHelper.product1, 5);
     expect(Promise.resolve());
-  })
+  });
 });
 

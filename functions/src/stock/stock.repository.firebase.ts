@@ -15,4 +15,14 @@ export class StockRepositoryFirebase implements StockRepository{
   db(): FirebaseFirestore.Firestore {
     return admin.firestore();
   }
+
+  async lowerStock(product: Products, amount: number): Promise<void> {
+    const doc = await this.db().collection(`${this.stockPath}`)
+      .doc(`${product.id}`)
+      .get();
+    const stock = doc.data() as Stock;
+    stock.Amount = stock.Amount - amount;
+    await this.db().doc(`${this.stockPath}/${product.id}`).set(stock);
+    return Promise.resolve();
+  }
 }
